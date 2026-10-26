@@ -662,35 +662,35 @@
       name: "Glock-18",
       conditions: { side: "T", round_economy: "eco", playstyle: "run_and_gun" },
       conclusion: { primaryWeaponId: "glock" },
-      rationale: "Darmowy pistolet Terrorystów na rundę eco z 20 nabojami i możliwością strzelania w biegu."
+      rationale: "Darmowy pistolet Terrorystów na rundę eco. Duży magazynek i celność w biegu."
     },
     {
       id: "R_USP",
       name: "USP-S",
       conditions: { side: "CT", round_economy: "eco", weapon_feature: "silencer" },
       conclusion: { primaryWeaponId: "usp" },
-      rationale: "Domyślny pistolet CT z tłumikiem do precyzyjnych 1-tapów w głowę i cichego lurku."
+      rationale: "Domyślny pistolet CT z tłumikiem do precyzyjnych strzałów w głowę i cichego lurku."
     },
     {
       id: "R_P2000",
       name: "P2000",
       conditions: { side: "CT", round_economy: "eco", weapon_feature: "standard" },
       conclusion: { primaryWeaponId: "p2000" },
-      rationale: "Alternatywny pistolet CT z powiększoną rezerwą amunicji (52 kule) do obrony bombsite'u."
+      rationale: "Alternatywny pistolet CT z powiększoną rezerwą amunicji."
     },
     {
       id: "R_DUAL_BERETTAS",
       name: "Dual Berettas",
       conditions: { round_economy: "eco", weapon_feature: "high_capacity" },
       conclusion: { primaryWeaponId: "dual_berettas" },
-      rationale: "Podwójne pistolety o 30 nabojach do zasypania przeciwnika gradem kul z bliska."
+      rationale: "Podwójne, niezbyt celne pistolety do zasypania przeciwnika gradem kul z bliska."
     },
     {
       id: "R_P250",
       name: "P250",
       conditions: { round_economy: "eco", playstyle: "precision" },
       conclusion: { primaryWeaponId: "p250" },
-      rationale: "Niedrogi pistolet o przyzwoitej penetracji pancerza za $300."
+      rationale: "Niedrogi pistolet o przyzwoitej penetracji pancerza i dobrej celności."
     },
 
     // 2. Force
@@ -706,63 +706,63 @@
       name: "Five-SeveN",
       conditions: { side: "CT", round_economy: "force", tactical_role: "anchor", weapon_feature: "high_capacity" },
       conclusion: { primaryWeaponId: "fiveseven" },
-      rationale: "Pistolet CT z 20 nabojami, 91% penetracją pancerza i zabójczym 1-tapem z bliska."
+      rationale: "Pistolet CT z dużym magazynkiem, ekstremalnie śmiertelny na krótkim dystansie."
     },
     {
       id: "R_DEAGLE",
       name: "Desert Eagle",
       conditions: { round_economy: "force", tactical_role: "sniper_support", engagement_distance: "long" },
       conclusion: { primaryWeaponId: "deagle" },
-      rationale: "Legendarny pistolet z 1-tapem w głowę na każdym dystansie dla snajpera/strzelca."
+      rationale: "Legendarny pistolet, kieszonkowa snajperka. Wymaga precyzji."
     },
     {
       id: "R_R8",
       name: "R8 Revolver",
       conditions: { round_economy: "force", playstyle: "spray_defense", engagement_distance: "long" },
       conclusion: { primaryWeaponId: "r8" },
-      rationale: "Potężny rewolwer zadający 86 obrażeń w korpus z pre-fire zza osłony."
+      rationale: "Potężny rewolwer wymagający załadowania strzału, idealny do pre-fire."
     },
     {
       id: "R_CZ75",
       name: "CZ75-Auto",
       conditions: { round_economy: "force", tactical_role: "lurk", engagement_distance: "close" },
       conclusion: { primaryWeaponId: "cz75" },
-      rationale: "Kieszonkowy automat do cichych zasadzek za rogiem w zwarciu."
+      rationale: "Kieszonkowy automat do zasadzek w zwarciu. Bardzo wysoka szybkostrzelność."
     },
     {
       id: "R_MAC10",
       name: "MAC-10",
       conditions: { side: "T", round_economy: "force", playstyle: "run_and_gun" },
       conclusion: { primaryWeaponId: "mac10" },
-      rationale: "Ekonomiczny demon prędkości T za $1050 z podwójną nagrodą finansową."
+      rationale: "Maszyna do zabijania w biegu podczas rusha. Bardzo wysoka szybkostrzelność."
     },
     {
       id: "R_MP9",
       name: "MP9",
       conditions: { side: "CT", round_economy: "force", playstyle: "run_and_gun" },
       conclusion: { primaryWeaponId: "mp9" },
-      rationale: "857 RPM i celność w skoku – król rund force CT."
+      rationale: "niedrogi, ale wyjątkowo celny pistolet maszynowy. Idealny do gry w biegu."
     },
     {
       id: "R_NOVA",
       name: "Nova",
       conditions: { round_economy: "force", tactical_role: "anti_rush", playstyle: "precision" },
       conclusion: { primaryWeaponId: "nova" },
-      rationale: "Tania strzelba ($1050) o ciasnym skupieniu śrutu i potrójnej nagrodzie $900."
+      rationale: "Tania strzelba o ciasnym skupieniu śrutu. Ogromna nagroda i zaskakująca celność w locie."
     },
     {
       id: "R_MAG7",
       name: "MAG-7",
       conditions: { side: "CT", round_economy: "force", tactical_role: "anti_rush", engagement_distance: "close" },
       conclusion: { primaryWeaponId: "mag7" },
-      rationale: "Skacząca strzelba CT do obrony ciasnych zakrętów za $1300."
+      rationale: "Niedroga, ale celna strzelba CT do obrony ciasnych zakrętów. Wybór na farmienie fragów."
     },
     {
       id: "R_SAWEDOFF",
       name: "Sawed-Off",
       conditions: { side: "T", round_economy: "force", tactical_role: "entry", engagement_distance: "close" },
       conclusion: { primaryWeaponId: "sawedoff" },
-      rationale: "Brutalny obrzyn T do czyszczenia bezpośredniego wejścia na bombsite."
+      rationale: "Tania strzelba T do czyszczenia wejścia na bombsite. Dobra na force buy."
     },
 
     // 3. Semi
@@ -771,21 +771,21 @@
       name: "Galil AR",
       conditions: { side: "T", round_economy: "semi", tactical_role: "entry" },
       conclusion: { primaryWeaponId: "galilar" },
-      rationale: "Ekonomiczny karabin T za $1800 z 35 nabojami."
+      rationale: "Ekonomiczny karabin T - tańszy odpowiednik kałasznikowa."
     },
     {
       id: "R_FAMAS",
       name: "FAMAS",
       conditions: { side: "CT", round_economy: "semi", tactical_role: "anchor" },
       conclusion: { primaryWeaponId: "famas" },
-      rationale: "Karabin budżetowy CT za $2050 z opcją burst-fire."
+      rationale: "Karabin budżetowy CT z opcją trybu seryjnego. Kup, jeśli nie stać cię na inne karabiny."
     },
     {
       id: "R_SSG08",
       name: "SSG 08",
       conditions: { round_economy: "semi", tactical_role: "sniper_support" },
       conclusion: { primaryWeaponId: "ssg08" },
-      rationale: "Lekka snajperka Scout ($1700) z 1-tapem w głowę i pełną mobilnością."
+      rationale: "Lekka snajperka Scout z większym magazynkiem i prędkością ruchu niż AWP."
     },
     {
       id: "R_MP5SD",
@@ -799,42 +799,42 @@
       name: "P90",
       conditions: { round_economy: "semi", weapon_feature: "high_capacity", playstyle: "run_and_gun" },
       conclusion: { primaryWeaponId: "p90" },
-      rationale: "50 naboi i nieustanny bieg z zasypywaniem przeciwnika gradem kul."
+      rationale: "Nieustanne zasypywanie przeciwników gradem kul w biegu. Zostaniesz znienawidzony."
     },
     {
       id: "R_BIZON",
       name: "PP-Bizon",
       conditions: { round_economy: "semi", weapon_feature: "high_capacity", tactical_role: "anti_rush" },
       conclusion: { primaryWeaponId: "bizon" },
-      rationale: "Bębenek na 64 kule anty-eco bez konieczności przeładowywania."
+      rationale: "Ogromny bębenek bez konieczności przeładowywania. Świetne anty-eco."
     },
     {
       id: "R_UMP45",
       name: "UMP-45",
       conditions: { round_economy: "semi", playstyle: "precision" },
       conclusion: { primaryWeaponId: "ump45" },
-      rationale: "Mocne uderzenie .45 ACP i wysoka penetracja pancerza za $1200."
+      rationale: "Mocne uderzenie i wysoka penetracja pancerza za niewielkie pieniądze."
     },
     {
       id: "R_MP7",
       name: "MP7",
       conditions: { round_economy: "semi", playstyle: "spray_defense" },
       conclusion: { primaryWeaponId: "mp7" },
-      rationale: "Zbalansowany PM o stabilnym odrzucie na średnim dystansie."
+      rationale: "Zbalansowany SMG o stabilnym odrzucie na średnim dystansie. Używaj ostrożnie."
     },
     {
       id: "R_NEGEV",
       name: "Negev",
       conditions: { round_economy: "semi", weapon_feature: "high_capacity", playstyle: "spray_defense" },
       conclusion: { primaryWeaponId: "negev" },
-      rationale: "Laser zaporowy ($1700) tworzący nieprzebijalną ścianę ognia."
+      rationale: "Laser zaporowy - w bezruchu i przykucu praktycznie idealnie celny. Zatrzymuje każdy rush."
     },
     {
       id: "R_XM1014",
       name: "XM1014",
       conditions: { round_economy: "semi", tactical_role: "anti_rush", engagement_distance: "close" },
       conclusion: { primaryWeaponId: "xm1014" },
-      rationale: "Automatyczna strzelba bojowa z 80% penetracją pancerza."
+      rationale: "Automatyczna strzelba bojowa, jeśli chcesz obić przeciwnika, ale nie zależy Ci na precyzji."
     },
 
     // 4. Full
@@ -850,35 +850,35 @@
       name: "SG 553",
       conditions: { side: "T", round_economy: "full", weapon_feature: "scope" },
       conclusion: { primaryWeaponId: "sg553" },
-      rationale: "Karabin T z lunetą optyczną i 100% penetracją pancerza."
+      rationale: "Krieg - Wyjątkowy karabin terrorystów z lunetą optyczną i 100% penetracją pancerza."
     },
     {
       id: "R_M4A1S",
       name: "M4A1-S",
       conditions: { side: "CT", round_economy: "full", weapon_feature: "silencer" },
       conclusion: { primaryWeaponId: "m4a1s" },
-      rationale: "Wyciszony karabin CT z laserowym odrzutem i brakiem smug przez dym."
+      rationale: "Wyciszony karabin CT z minimalnym rozrzutem i brakiem smug przez dym."
     },
     {
       id: "R_AUG",
       name: "AUG",
       conditions: { side: "CT", round_economy: "full", weapon_feature: "scope" },
       conclusion: { primaryWeaponId: "aug" },
-      rationale: "Karabin defensywny CT z lunetą optyczną na długie aleje."
+      rationale: "Karabin defensywny CT z lunetą optyczną na długie aleje. Konkurent Kriega."
     },
     {
       id: "R_M4A4",
       name: "M4A4",
       conditions: { side: "CT", round_economy: "full", weapon_feature: "high_capacity" },
       conclusion: { primaryWeaponId: "m4a4" },
-      rationale: "Klasyczny karabin CT z 30 nabojami do zmasowanej obrony pozycji."
+      rationale: "Klasyczny, niezawodny karabin CT do zmasowanej obrony pozycji."
     },
     {
       id: "R_AWP_FULL",
       name: "AWP",
       conditions: { round_economy: "full", tactical_role: "sniper_support" },
       conclusion: { primaryWeaponId: "awp" },
-      rationale: "Legendarna snajperka z 1-hit killem w korpus."
+      rationale: "Legendarna snajperka zabijająca jednym strzałem nawet w klatkę piersiową i przez cienkie ściany."
     },
 
     // 5. Rich
@@ -887,21 +887,21 @@
       name: "G3SG1",
       conditions: { side: "T", round_economy: "rich", tactical_role: "sniper_support" },
       conclusion: { primaryWeaponId: "g3sg1" },
-      rationale: "Samopowtarzalna snajperka T za $5000 z 20 nabojami."
+      rationale: "Samopowtarzalna snajperka terrorystów, eliminująca cele dwoma szybkimi strzałami."
     },
     {
       id: "R_SCAR20",
       name: "SCAR-20",
       conditions: { side: "CT", round_economy: "rich", tactical_role: "sniper_support" },
       conclusion: { primaryWeaponId: "scar20" },
-      rationale: "Auto-snajperka CT eliminująca cele dwoma szybkimi strzałami."
+      rationale: "Auto-snajperka antyterorystów, idealna do spowalniania wejść na bombsite z bezpiecznej odległości."
     },
     {
       id: "R_M249",
       name: "M249",
       conditions: { round_economy: "rich", weapon_feature: "high_capacity" },
       conclusion: { primaryWeaponId: "m249" },
-      rationale: "Prestiżowy CKM za $5200 z taśmą 100 naboi do ciągłego ognia."
+      rationale: "Prestiżowy CKM z taśmą 100 naboi do ciągłego ognia. Wybierany głównie dla zabawy, bo jest absurdalnie drogi."
     }
   ];
 

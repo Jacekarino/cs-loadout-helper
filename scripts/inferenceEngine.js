@@ -1,13 +1,3 @@
-/**
- * CS2 LOADOUT EXPERT SYSTEM - PROSTA MASZYNA WNIOSKOWANIA (INFERENCE ENGINE)
- * 
- * Klasyczny silnik regułowy dla studentów (przedmiot: Metody Sztucznej Inteligencji):
- * 1. Pamięć Robocza (Working Memory) - przechowuje fakty wybrane w ankiecie.
- * 2. Logika IF... THEN... - weryfikacja przesłanek reguł produkcyjnych (Forward Chaining).
- * 3. Zwraca wyłącznie JEDEN, najbardziej pasujący wynik (rekomendowaną broń).
- * 4. Respektuje poziom budżetu (nigdy nie zaleca pistoletów startowych przy dużych funduszach).
- */
-
 (function (root, factory) {
   if (typeof module === 'object' && module.exports) {
     module.exports = factory(require('./knowledgeBase.js'));
@@ -16,7 +6,7 @@
   }
 }(typeof self !== 'undefined' ? self : this, function (KB) {
 
-  // Domyślne bronie awaryjne dopasowane do frakcji i poziomu budżetu
+  // Domyślne bronie awaryjne jeśli żadna nie pasuje
   const FALLBACK_WEAPONS = {
     rich: { T: "ak47", CT: "m4a1s" },
     full: { T: "ak47", CT: "m4a1s" },
@@ -30,13 +20,7 @@
       this.kb = knowledgeBase;
     }
 
-    /**
-     * Główny punkt wejścia wnioskowania w przód (Forward Chaining).
-     * Zwraca wyłącznie JEDEN, najbardziej optymalny wynik.
-     * 
-     * @param {Object} facts - Odpowiedzi użytkownika z ankiety
-     * @returns {Object} Obiekt z pojedynczą rekomendowaną bronią
-     */
+    // Uruchomienie wnioskowania w przód
     run(facts) {
       if (!this.kb || !this.kb.RULES || !this.kb.WEAPONS) {
         throw new Error("Baza wiedzy nie została poprawnie załadowana.");
@@ -47,24 +31,24 @@
 
       const matchedCandidates = [];
 
-      // Przegląd reguł produkcyjnych (IF... THEN...)
+      // Przegląd reguł (IF... THEN...)
       for (const rule of this.kb.RULES) {
-        // 1. Zgodność frakcyjna (T, CT lub obie frakcje)
+        // 1. Zgodność frakcyjna
         if (rule.conditions.side && rule.conditions.side !== side) {
           continue;
         }
 
-        // 2. Ścisła zgodność budżetowa (brak absurdalnych zaleceń eco przy dużym budżecie)
+        // 2. Zgodność budżetowa
         let budgetScore = 0;
         if (rule.conditions.round_economy === budget) {
           budgetScore = 10;
         } else if (budget === "rich" && rule.conditions.round_economy === "full") {
-          budgetScore = 4; // przy bogatym budżecie dopuszczamy karabiny/AWP z full-buy
+          budgetScore = 4;
         } else {
           continue;
         }
 
-        // 3. Weryfikacja przesłanek taktycznych (rola w rundzie, cechy broni, styl gry, dystans)
+        // 3. Weryfikacja faktów
         let matchScore = budgetScore;
         let hasConflict = false;
 
@@ -77,7 +61,7 @@
           }
         }
 
-        // Kara za sprzeczność przesłanki, aby dokładne dopasowanie zawsze wygrywało
+        // 4. Kara za ewentualne sprzeczności
         if (hasConflict) {
           matchScore -= 5;
         }

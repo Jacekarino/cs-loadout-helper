@@ -36,40 +36,7 @@ Aplikacja działa w modelu **Single Page Application (SPA)** całkowicie po stro
 
 ## 🧠 Architektura Systemu Ekspertowego
 
-System bazuje na klasycznym, sprawdzonym schemacie regułowego systemu doradczego AI:
-
-```
-               ┌───────────────────────────────────────────────────┐
-               │              UŻYTKOWNIK (Gracz CS2)              │
-               └─────────────────────────┬─────────────────────────┘
-                                         │  (odpowiedzi w ankiecie)
-                                         ▼
-┌──────────────────────────────────────────────────────────────────────────┐
-│                             BAZA FAKTÓW                                  │
-│  [strona: T/CT] [budżet: eco..rich] [rola] [dystans] [styl walki]...      │
-└────────────────────────────────────────┬─────────────────────────────────┘
-                                         │
-                                         ▼
-┌──────────────────────────────────────────────────────────────────────────┐
-│                   SILNIK WNIOSKOWANIA W PRZÓD (Engine)                   │
-│                    scripts/inferenceEngine.js                            │
-│  - Filtracja frakcyjna (warunek twardy)                                  │
-│  - Dopasowanie budżetowe (waga główna)                                   │
-│  - Weryfikacja warunków taktycznych (+3 pkt / dopasowany fakt)           │
-│  - Penalizacja sprzeczności (-5 pkt / konflikt)                          │
-│  - Mechanizm reguł awaryjnych (Fallback Handlers)                        │
-└───────────────────▲──────────────────────────────────┬───────────────────┘
-                    │                                  │
-                    │ ewaluacja reguł IF-THEN           │ wyłoniona konkluzja
-                    │                                  ▼
-┌───────────────────┴─────────────────┐    ┌───────────────────────────────┐
-│        BAZA WIEDZY (KB)             │    │       MODUŁ WYJAŚNIAJĄCY      │
-│     scripts/knowledgeBase.js        │    │    (Explanation Facility)     │
-│  - 34 modele broni ze statystykami  │    │  - Rekomendowana broń         │
-│  - Baza reguł produkcyjnych IF-THEN │    │  - Identyfikator reguły       │
-│  - Parametry i cechy taktyczne      │    │  - Uzasadnienie decyzyjne     │
-└─────────────────────────────────────┘    └───────────────────────────────┘
-```
+System bazuje na klasycznym, sprawdzonym schemacie regułowego systemu doradczego AI.
 
 ### 1. Baza Wiedzy (`knowledgeBase.js`)
 - Zawiera szczegółowy katalog **34 broni** obecnych w *Counter-Strike 2*, uwzględniając oficjalne parametry: cenę, nagrodę za frag, obrażenia bazowe, mnożnik trafienia w głowę, szybkostrzelność (*fire rate*), penetrację pancerza, pojemność magazynka, kontrolę odrzutu oraz unikalne atuty.

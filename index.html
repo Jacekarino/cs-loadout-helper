@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS2 Loadout Helper</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Rajdhani:wght@600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app-container">
+    <!-- Nagłówek aplikacji -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-icon">CS2</div>
+        <div>
+          <h1 class="brand-title">LOADOUT <span>HELPER</span></h1>
+          <span class="brand-subtitle">System Ekspertowy Doboru Broni</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="open-info-btn" class="btn btn-secondary" title="Informacje o projekcie">
+          <span>ℹ</span> INFORMACJE
+        </button>
+      </div>
+    </header>
+
+    <main class="main-centered">
+
+      <!-- Wybór drużyny -->
+      <section id="team-select-panel" class="card single-panel" aria-labelledby="team-select-heading">
+        <div class="card-header">
+          <h2 id="team-select-heading" class="card-title">
+            <span class="icon">⚔</span> Wybierz Drużynę
+          </h2>
+        </div>
+
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 6px;">
+          Wybierz stronę konfliktu, aby przejść do doboru optymalnego uzbrojenia na rundę:
+        </p>
+
+        <div class="team-select-grid">
+          <!-- Karta Terrorystów -->
+          <div class="team-card team-card-t" id="choose-team-t" role="button" tabindex="0" title="Wybierz Terrorystów">
+            <div class="team-emblem-wrap">★</div>
+            <h3 class="team-title">Terroryści</h3>
+            <span class="team-subtitle">Strona T • Ofensywa</span>
+            <ul class="team-perks">
+              <li><span class="bullet">▶</span> Potężniejsze bronie</li>
+              <li><span class="bullet">▶</span> Tańsze zakupy</li>
+              <li><span class="bullet">▶</span> Agresywny rush na bombsite</li>
+            </ul>
+          </div>
+
+          <!-- Karta Antyterrorystów -->
+          <div class="team-card team-card-ct" id="choose-team-ct" role="button" tabindex="0"
+            title="Wybierz Antyterrorystów">
+            <div class="team-emblem-wrap">🛡</div>
+            <h3 class="team-title">Antyterroryści</h3>
+            <span class="team-subtitle">Strona CT • Defensywa</span>
+            <ul class="team-perks">
+              <li><span class="bullet">▶</span> Wyciszone lufy broni</li>
+              <li><span class="bullet">▶</span> Przewaga pozycyjna</li>
+              <li><span class="bullet">▶</span> Precyzyjna obrona celów</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ankieta diagnostyczna -->
+      <section id="survey-panel" class="card single-panel" style="display: none;"
+        aria-labelledby="survey-panel-heading">
+        <div class="card-header">
+          <h2 id="survey-panel-heading" class="card-title">
+            <span class="icon">⚙</span> Ankieta diagnostyczna
+          </h2>
+          <span id="survey-progress-badge" class="badge-ai">Wypełniono: 0 / 5</span>
+        </div>
+
+        <!-- Pasek drużyny -->
+        <div class="selected-team-banner">
+          <div class="selected-team-info">
+            <span>Wybrana drużyna:</span>
+            <strong id="selected-team-display">★ Terroryści (T)</strong>
+          </div>
+          <button id="change-team-btn" type="button" class="btn btn-secondary btn-sm" title="Powrót do wyboru drużyny">
+            <span>⇄</span> Zmień
+          </button>
+        </div>
+
+        <form id="diagnostic-form" autocomplete="off" onsubmit="return false;">
+          <input type="hidden" id="hidden-side-input" name="side" value="">
+
+          <!-- 1. Budżet na rundę -->
+          <div class="question-group" data-question="round_economy">
+            <div class="question-label">
+              <span>1. Budżet na rundę</span>
+            </div>
+            <div class="options-grid">
+              <label class="radio-card">
+                <input type="radio" name="round_economy" value="eco">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">🪙 Eco</span>
+                  <span class="radio-card-desc">&lt; $1500</span>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="round_economy" value="force">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">⚡ Force</span>
+                  <span class="radio-card-desc">$1500 – $2500</span>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="round_economy" value="semi">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">💵 Semi</span>
+                  <span class="radio-card-desc">$2500 – $3750</span>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="round_economy" value="full">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">💳 Full</span>
+                  <span class="radio-card-desc">$3750 – $5000</span>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="round_economy" value="rich">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">💰 Nadmiar</span>
+                  <span class="radio-card-desc">&gt; $5000</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- 2. Rola w drużynie -->
+          <div class="question-group" data-question="tactical_role">
+            <div class="question-label">
+              <span>2. Rola w drużynie</span>
+            </div>
+            <div class="options-grid">
+
+              <label class="radio-card">
+                <input type="radio" name="tactical_role" value="entry">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">💥 Entry fragger</span>
+                  <span class="radio-card-desc">Pierwsza linia ataku, agresywny push, wejście na site</span>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="tactical_role" value="anti_rush">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">🛑 Anty-rush</span>
+                  <span class="radio-card-desc">Odpieranie agresywnego natarcia wroga, wąskie gardła</span>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="tactical_role" value="anchor">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">⚓ Anchor</span>
+                  <span class="radio-card-desc">Trzymanie pozycji, obrona z kąta na bombsite</span>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="tactical_role" value="lurk">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">👤 Lurker</span>
+                  <span class="radio-card-desc">Flankowanie, strategiczna gra z zaskoczenia</span>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="tactical_role" value="sniper_support">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">🎯 Snajper</span>
+                  <span class="radio-card-desc">Kontrola długich alei, precyzyjne strzały z dystansu</span>
+                </div>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- 3. Preferowany dystans -->
+          <div class="question-group" data-question="engagement_distance">
+            <div class="question-label">
+              <span>3. Preferowany dystans</span>
+            </div>
+            <div class="options-grid three-cols">
+              <label class="radio-card">
+                <input type="radio" name="engagement_distance" value="close">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">🥊 Bliskie starcia</span>
+                  <span class="radio-card-desc">Rush, ciasne korytarze, venty</span>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="engagement_distance" value="medium">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">⚔️ Średni dystans</span>
+                  <span class="radio-card-desc">Standardowe starcia na półdystansie</span>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="engagement_distance" value="long">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">🏹 Dalekie strzały</span>
+                  <span class="radio-card-desc">Długie aleje, pojedynki z zoomem</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- 4. Preferowany styl walki -->
+          <div class="question-group" data-question="playstyle">
+            <div class="question-label">
+              <span>4. Styl walki</span>
+            </div>
+            <div class="options-grid three-cols">
+              <label class="radio-card">
+                <input type="radio" name="playstyle" value="precision">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">👁️ Precyzyjny tapping</span>
+                  <span class="radio-card-desc">Bezpieczna gra na shiftcie, szybkie peaki i celne strzały w głowę z
+                    zatrzymania</span>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="playstyle" value="spray_defense">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">🛡️ Ogień zaporowy</span>
+                  <span class="radio-card-desc">Kontrola odrzutu, serie podczas obrony pozycji, spam przez skanowalne
+                    osłony</span>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="playstyle" value="run_and_gun">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">🏃 Ostrzał w biegu</span>
+                  <span class="radio-card-desc">Agresywne fullauto w biegu, nacisk na wysoką mobilność, brak
+                    postojów</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- 5. Cechy broni-->
+          <div class="question-group" data-question="weapon_feature">
+            <div class="question-label">
+              <span>5. Cechy broni</span>
+            </div>
+            <div class="options-grid two-cols">
+              <label class="radio-card">
+                <input type="radio" name="weapon_feature" value="standard">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">⚙ Standardowa lufa</span>
+                  <span class="radio-card-desc">Maksymalna mobilność, duża siła pojedynczego strzału</span>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="weapon_feature" value="silencer">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">🔇 Tłumik dźwięku</span>
+                  <span class="radio-card-desc">Cichy strzał, ukrycie na radarze, brak smug z lufy</span>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="weapon_feature" value="scope">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">🔭 Luneta / optyka</span>
+                  <span class="radio-card-desc">Przybliżenie optyczne zapewniające precyzję na odległość</span>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="weapon_feature" value="high_capacity">
+                <div class="radio-card-content">
+                  <span class="radio-card-title">🔋 Powiększony magazynek</span>
+                  <span class="radio-card-desc">Duża ilość zapasowej amunicji, zaporowy ogień ciągły</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- Wynik: rekomendowana broń -->
+      <section id="result-panel" class="card single-panel" style="display: none;" aria-labelledby="results-heading">
+        <div class="card-header">
+          <h2 id="results-heading" class="card-title">
+            <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+                <line x1="12" y1="2" x2="12" y2="4"></line>
+                <line x1="12" y1="20" x2="12" y2="22"></line>
+                <line x1="2" y1="12" x2="4" y2="12"></line>
+                <line x1="20" y1="12" x2="22" y2="12"></line>
+              </svg></span> Rekomendowana Broń
+          </h2>
+          <span id="result-team-badge" class="side-badge t">Terroryści (T)</span>
+        </div>
+
+        <div class="result-container">
+          <div id="primary-weapon-container">
+            <!-- inject app.js -->
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+
+
+  <!-- Modal z info -->
+  <div id="info-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="info-modal-title">
+    <div class="modal-window info-modal-window">
+
+      <div class="modal-header">
+        <h2 id="info-modal-title" class="modal-title">
+          <span>ℹ</span> Informacje
+        </h2>
+        <button id="close-info-btn" class="modal-close" aria-label="Zamknij modal">&times;</button>
+      </div>
+
+      <div class="modal-body info-modal-body">
+        <div class="info-section">
+          <h3 class="info-section-title">O projekcie</h3>
+          <p>
+            System ekspercki dobroru uzbrojenia stworzony na potrzeby zajęć z Metod Sztucznej Inteligencji. Projekt ten
+            symuluje, w uproszczonej formie, proces podejmowania decyzji przez członka drużyny w grze
+            Counter-Strike 2, opierając się wyłącznie na logice regułowej i wstępnie zdefiniowanej bazie wiedzy.
+            <br><br>
+            Aplikacja działa jako SPA (Single Page Application) - strona internetowa, która działa w pełni client side i
+            reaguje na interakcje użytkownika bez odświeżania i przekierowań, bezpośrednio poprzez zmianę zawartości
+            panelu. Nie wymaga serwera ani instalacji żadnych dodatkowych paczek. Pełna dokumentacja znajduje się w
+            pliku dokumentacja.pdf.
+          </p>
+        </div>
+
+        <div class="info-section">
+          <h3 class="info-section-title">Autor</h3>
+          <p>
+            Jacek Kowalczyk 44921<br>
+            Collegium Witelona Uczelnia Państwowa
+          </p>
+        </div>
+
+        <div class="info-section">
+          <h3 class="info-section-title">Linki i adresy</h3>
+          <p>
+            <a href="https://github.com/Jacekarino" target="_blank"
+              rel="noopener noreferrer">github.com/Jacekarino</a><br>
+            <a
+              href="mailto:jacek.kowalczyk.inf@studenci.collegiumwitelona.pl">jacek.kowalczyk.inf@studenci.collegiumwitelona.pl</a><br>
+            <a href="mailto:jacekarino@duck.com">jacekarino@duck.com</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Skrypy javascript -->
+  <script src="scripts/knowledgeBase.js"></script>
+  <script src="scripts/inferenceEngine.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+
+</html>
